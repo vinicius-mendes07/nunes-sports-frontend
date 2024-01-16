@@ -7,6 +7,7 @@ export const Container = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray[100]};
   border-radius: 8px;
   overflow: hidden;
+  margin-top: 32px;
 
   table {
     width: 100%;
