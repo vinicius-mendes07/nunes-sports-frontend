@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 32px;
-
   h1 {
     font-size: 24px;
   }
