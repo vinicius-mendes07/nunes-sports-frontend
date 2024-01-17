@@ -10,10 +10,9 @@ export default function NewProduct() {
       await ProductsService.createProduct(product);
 
       productFormRef.current.resetFields();
-      alert('produto cadastrado com sucesso');
+      alert('produto cadastrado com sucesso!');
     } catch (error) {
-      alert('Erro ao cadastrar o produto');
-      console.log(error);
+      alert('Erro ao cadastrar o produto!');
     }
   }
   return (

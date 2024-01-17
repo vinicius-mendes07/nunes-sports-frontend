@@ -6,9 +6,15 @@ class ProductsService {
   }
 
   async createProduct({name, description, price}) {
-    const product = await api.post('/products', {name, description, price: +price});
+    return api.post('/products', {name, description, price});
+  }
 
-    return product;
+  getContactById(id) {
+    return api.get(`/products/${id}`);
+  }
+
+  updateContact(id, product) {
+    return api.put(`/products/${id}`, product);
   }
 }
 

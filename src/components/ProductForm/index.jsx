@@ -41,7 +41,7 @@ const ProductForm = forwardRef(({ pageTitle, buttonLabel, onSubmit }, ref) => {
     event.preventDefault();
     setIsSubmitting(true)
 
-    await onSubmit({name, description, price})
+    await onSubmit({name, description, price: +price})
 
     setIsSubmitting(false)
   }

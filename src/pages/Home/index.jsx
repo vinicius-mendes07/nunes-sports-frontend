@@ -28,7 +28,7 @@ export default function Home() {
     } catch (error){
       setHasError(true)
       setProducts([]);
-      console.log(error);
+      console.log(error?.message);
     } finally {
       setIsLoading(false)
     }
