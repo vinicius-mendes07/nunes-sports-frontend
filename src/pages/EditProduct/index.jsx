@@ -3,7 +3,8 @@ import ProductForm from "../../components/ProductForm";
 export default function EditProduct() {
   return (
     <ProductForm
-        pageTitle="Editar jon doe"
-      />
+      pageTitle="Editar jon doe"
+      buttonLabel="Salvar alterações"
+    />
   )
 }

@@ -1,20 +1,21 @@
 import { StyledButton } from "./styles";
 import PropTypes from 'prop-types'
 
-export default function Button({type, onClick}){
+export default function Button({type, onClick, children}){
   return (
     <StyledButton
       type={type}
       onClick={onClick}
     >
-      Cadastrar
+      {children}
     </StyledButton>
   )
 }
 
 Button.propTypes = {
   type: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
 }
 
 Button.defaultProps = {

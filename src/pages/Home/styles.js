@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+
+`
+
+export const ListHeader = styled.div`
+  margin-bottom: 32px;
+
   h1 {
     font-size: 24px;
   }
@@ -11,16 +17,10 @@ export const Container = styled.div`
     margin-top: 16px;
   }
 `
-
-export const ListHeader = styled.div`
-  display: flex;
-  align-items: center;
-`
 export const InputSearchContainer = styled.div`
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
-  margin-top: 16px;
 
   input {
     width: 100%;

@@ -4,7 +4,7 @@ import Button from "../Button";
 import { Input } from "../Input";
 import { Form } from "./styles";
 
-export default function ProductForm({ pageTitle }) {
+export default function ProductForm({ pageTitle, buttonLabel }) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -47,7 +47,10 @@ export default function ProductForm({ pageTitle }) {
         />
         <Button
           type="submit"
-        />
+
+        >
+          {buttonLabel}
+        </Button>
       </Form>
     </>
   );
@@ -55,4 +58,5 @@ export default function ProductForm({ pageTitle }) {
 
 ProductForm.propTypes = {
   pageTitle: PropTypes.string.isRequired,
+  buttonLabel: PropTypes.string.isRequired,
 }

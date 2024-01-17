@@ -5,6 +5,7 @@ export default function NewProduct() {
     <>
       <ProductForm
         pageTitle="Cadastrar novo produto"
+        buttonLabel="Cadastrar"
       />
     </>
   )
