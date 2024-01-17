@@ -1,13 +1,29 @@
 import PropTypes from 'prop-types'
+import { useImperativeHandle } from 'react';
+import { forwardRef } from 'react';
 import { useState } from "react";
 import Button from "../Button";
 import { Input } from "../Input";
 import { Form } from "./styles";
 
-export default function ProductForm({ pageTitle, buttonLabel }) {
+const ProductForm = forwardRef(({ pageTitle, buttonLabel, onSubmit }, ref) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    setFieldsValues: (product) => {
+      setName(product.name ?? '');
+      setDescription(product.description ?? '');
+      setPrice(product.price ?? '');
+    },
+    resetFields: () => {
+      setName('');
+      setDescription('');
+      setPrice('');
+    }
+  }), [])
 
   function handleChangeName(event) {
     setName(event.target.value);
@@ -21,10 +37,17 @@ export default function ProductForm({ pageTitle, buttonLabel }) {
     setPrice(event.target.value);
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log({ name, description, price})
+    setIsSubmitting(true)
+
+    await onSubmit({name, description, price})
+
+    setIsSubmitting(false)
   }
+
+  const isFormValid = (name && price)
+
   return (
     <>
       <Form onSubmit={handleSubmit} noValidate>
@@ -32,7 +55,7 @@ export default function ProductForm({ pageTitle, buttonLabel }) {
         <Input
           onChange={handleChangeName}
           value={name}
-          placeholder="Nome"
+          placeholder="Nome *"
           />
         <Input
           onChange={handleChangeDescription}
@@ -43,20 +66,82 @@ export default function ProductForm({ pageTitle, buttonLabel }) {
           onChange={handleChangePrice}
           value={price}
           type="number"
-          placeholder="Preço"
+          placeholder="Preço *"
         />
         <Button
           type="submit"
-
+          disabled={!isFormValid || isSubmitting}
         >
           {buttonLabel}
         </Button>
       </Form>
     </>
-  );
-}
+  )
+});
+
+export default ProductForm;
 
 ProductForm.propTypes = {
   pageTitle: PropTypes.string.isRequired,
   buttonLabel: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 }
+
+// export default function ProductForm({ pageTitle, buttonLabel }) {
+//   const [name, setName] = useState('');
+//   const [description, setDescription] = useState('');
+//   const [price, setPrice] = useState('');
+
+//   function handleChangeName(event) {
+//     setName(event.target.value);
+//   }
+
+//   function handleChangeDescription(event) {
+//     setDescription(event.target.value);
+//   }
+
+//   function handleChangePrice(event) {
+//     setPrice(event.target.value);
+//   }
+
+//   async function handleSubmit(event) {
+//     event.preventDefault();
+
+//     try {
+//       await ProductsService.createContact({name, description, price})
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+
+//   const isFormValid = (name && price)
+//   return (
+//     <>
+//       <Form onSubmit={handleSubmit} noValidate>
+//         <h1>{pageTitle}</h1>
+//         <Input
+//           onChange={handleChangeName}
+//           value={name}
+//           placeholder="Nome"
+//           />
+//         <Input
+//           onChange={handleChangeDescription}
+//           value={description}
+//           placeholder="Descrição"
+//           />
+//         <Input
+//           onChange={handleChangePrice}
+//           value={price}
+//           type="number"
+//           placeholder="Preço"
+//         />
+//         <Button
+//           type="submit"
+//           disabled={!isFormValid}
+//         >
+//           {buttonLabel}
+//         </Button>
+//       </Form>
+//     </>
+//   );
+// }
