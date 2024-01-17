@@ -27,8 +27,8 @@ export default function ProductForm({ pageTitle }) {
   }
   return (
     <>
-      <h1>{pageTitle}</h1>
       <Form onSubmit={handleSubmit} noValidate>
+        <h1>{pageTitle}</h1>
         <Input
           onChange={handleChangeName}
           value={name}
