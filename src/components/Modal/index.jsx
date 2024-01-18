@@ -1,4 +1,7 @@
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Button from "../Button";
 import { Container, Footer, Overlay } from "./styles";
@@ -12,7 +15,33 @@ export default function Modal({
   title,
   children,
   isLoading,
+  confirmLabel,
 }) {
+  const [shouldRender, setShouldRender] = useState(visible);
+
+  const animatedElementRef = useRef(null);
+
+  useEffect(() => {
+    if(visible) {
+      setShouldRender(true);
+    }
+
+    function handleAnimationEnd() {
+      setShouldRender(false);
+    }
+
+    const elementRef = animatedElementRef.current;
+    if(!visible && elementRef) {
+      elementRef.addEventListener('animationend', handleAnimationEnd);
+    }
+
+    return () => {
+      if(elementRef) {
+        elementRef.removeEventListener('animationend', handleAnimationEnd);
+      }
+    }
+  }, [visible]);
+
   let container = document.getElementById('modal-portal');
 
   if (!container) {
@@ -21,13 +50,13 @@ export default function Modal({
     document.body.appendChild(container);
   }
 
-  if(!visible) {
+  if(!shouldRender) {
     return null;
   }
 
   return ReactDOM.createPortal(
-    <Overlay>
-      <Container danger={danger}>
+    <Overlay $isLeaving={!visible} ref={animatedElementRef}>
+      <Container $isLeaving={!visible} $danger={danger}>
         <h1>{title}</h1>
         <div className="modal-body">
           {children}
@@ -48,7 +77,7 @@ export default function Modal({
             danger={danger}
             disabled={isLoading}
           >
-            Confirmar
+            {confirmLabel}
           </Button>
         </Footer>
       </Container>
@@ -64,12 +93,14 @@ Modal.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   cancelLabel: PropTypes.string,
+  confirmLabel: PropTypes.string,
   danger: PropTypes.bool,
   isLoading: PropTypes.bool,
 }
 
 Modal.defaultProps = {
   cancelLabel: 'Cancelar',
+  confirmLabel: 'Confirmar',
   danger: false,
   isLoading: false,
 }

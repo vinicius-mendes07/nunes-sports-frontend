@@ -1,7 +1,8 @@
 import { StyledButton } from "./styles";
 import PropTypes from 'prop-types'
 
-export default function Button({type,
+export default function Button({
+  type,
   onClick,
   children,
   disabled,
@@ -12,7 +13,7 @@ export default function Button({type,
       type={type}
       onClick={onClick}
       disabled={disabled}
-      danger={danger}
+      $danger={danger}
     >
       {children}
     </StyledButton>
@@ -20,9 +21,9 @@ export default function Button({type,
 }
 
 Button.propTypes = {
+  children: PropTypes.node.isRequired,
   type: PropTypes.string,
   onClick: PropTypes.func,
-  children: PropTypes.node.isRequired,
   disabled: PropTypes.bool,
   danger: PropTypes.bool,
 }
