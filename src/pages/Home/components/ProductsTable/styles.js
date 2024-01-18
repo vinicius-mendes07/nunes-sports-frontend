@@ -23,10 +23,6 @@ export const Container = styled.div`
       padding: 14px;
       font-size: 14px;
       text-align: center;
-
-      &:nth-last-child(1) {
-        /* background-color: #fff; */
-      }
     }
 
     tbody {
@@ -37,9 +33,7 @@ export const Container = styled.div`
       font-size: 14px;
       padding: 14px;
       text-align: center;
-
-      &:nth-last-child(1) {
-      }
+      max-width: 250px;
     }
   }
 
@@ -47,5 +41,33 @@ export const Container = styled.div`
     border: none;
     background-color: transparent;
     margin-left: 16px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint}) {
+    table {
+      th {
+        font-size: 12px;
+      }
+
+      td {
+        font-size: 12px;
+        padding: 12px;
+      }
+      .actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+    }
+
+    button {
+      margin-left: 0px;
+    }
+
+    img {
+      width: 15px;
+    }
   }
 `

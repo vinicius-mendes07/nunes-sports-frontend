@@ -25,14 +25,16 @@ export default function ProductsTable({filteredProducts, onDeleteProduct}) {
               <td>{product.description || '-'}</td>
               <td>R$ {product.price}</td>
               <td>
-                <Link to={`/edit/${product.id}`}>
-                  <img src={edit} alt="edit" />
-                </Link>
-                <button
-                  onClick={() => onDeleteProduct(product)}
-                >
-                  <img src={trash} alt="delete" />
-                </button>
+                <div className='actions'>
+                  <Link to={`/edit/${product.id}`}>
+                    <img src={edit} alt="edit" />
+                  </Link>
+                  <button
+                    onClick={() => onDeleteProduct(product)}
+                    >
+                    <img src={trash} alt="delete" />
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

@@ -15,7 +15,6 @@ export const Container = styled.header`
 
     a {
       text-decoration: none;
-      color: ${({ theme }) => theme.colors.gray[900]};
       color: ${({ theme }) => theme.colors.primary.main};
       transition: 0.2s ease-in;
 
@@ -28,5 +27,19 @@ export const Container = styled.header`
   img  {
     border-radius: 4px;
     width: 150px;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoint}) {
+    padding: 24px;
+
+    div {
+      a {
+        font-size: 14px;
+      }
+    }
+
+    img  {
+      width: 100px;
+    }
   }
 `

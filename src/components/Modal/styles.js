@@ -64,6 +64,7 @@ export const Container = styled.div`
   padding: 24px;
   border-radius: 4px;
   animation: ${scaleIn} 0.3s;
+  margin: 0 16px;
 
   ${({ $isLeaving }) => $isLeaving && css`animation: ${scaleOut} 0.3s forwards;`}
 

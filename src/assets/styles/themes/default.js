@@ -21,4 +21,5 @@ export default {
       main: '#51CA73',
     },
   },
+  breakpoint: '600px',
 }
