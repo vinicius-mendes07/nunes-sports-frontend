@@ -6,7 +6,7 @@ export const Container = styled.div`
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
-  margin-top: 16px;
+  margin-top: 24px;
 
   p {
     margin-left: 8px;

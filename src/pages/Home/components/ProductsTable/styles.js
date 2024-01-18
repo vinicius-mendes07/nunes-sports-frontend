@@ -8,6 +8,7 @@ export const Container = styled.div`
   border-radius: 8px;
   overflow: hidden;
   margin-top: 32px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
   table {
     width: 100%;

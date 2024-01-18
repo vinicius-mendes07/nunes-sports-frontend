@@ -23,7 +23,7 @@ const ProductForm = forwardRef(({ pageTitle, buttonLabel, onSubmit }, ref) => {
       setDescription('');
       setPrice('');
     }
-  }), [])
+  }), []);
 
   function handleChangeName(event) {
     setName(event.target.value);
@@ -86,62 +86,3 @@ ProductForm.propTypes = {
   buttonLabel: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
 }
-
-// export default function ProductForm({ pageTitle, buttonLabel }) {
-//   const [name, setName] = useState('');
-//   const [description, setDescription] = useState('');
-//   const [price, setPrice] = useState('');
-
-//   function handleChangeName(event) {
-//     setName(event.target.value);
-//   }
-
-//   function handleChangeDescription(event) {
-//     setDescription(event.target.value);
-//   }
-
-//   function handleChangePrice(event) {
-//     setPrice(event.target.value);
-//   }
-
-//   async function handleSubmit(event) {
-//     event.preventDefault();
-
-//     try {
-//       await ProductsService.createContact({name, description, price})
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-
-//   const isFormValid = (name && price)
-//   return (
-//     <>
-//       <Form onSubmit={handleSubmit} noValidate>
-//         <h1>{pageTitle}</h1>
-//         <Input
-//           onChange={handleChangeName}
-//           value={name}
-//           placeholder="Nome"
-//           />
-//         <Input
-//           onChange={handleChangeDescription}
-//           value={description}
-//           placeholder="Descrição"
-//           />
-//         <Input
-//           onChange={handleChangePrice}
-//           value={price}
-//           type="number"
-//           placeholder="Preço"
-//         />
-//         <Button
-//           type="submit"
-//           disabled={!isFormValid}
-//         >
-//           {buttonLabel}
-//         </Button>
-//       </Form>
-//     </>
-//   );
-// }

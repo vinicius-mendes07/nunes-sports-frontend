@@ -22,7 +22,7 @@ export default function ProductsTable({filteredProducts, onDeleteProduct}) {
           {filteredProducts.map((product) => (
             <tr key={product.id}>
               <td>{product.name}</td>
-              <td>{product.description}</td>
+              <td>{product.description || '-'}</td>
               <td>R$ {product.price}</td>
               <td>
                 <Link to={`/edit/${product.id}`}>

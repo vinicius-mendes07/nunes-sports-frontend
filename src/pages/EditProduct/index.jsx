@@ -12,7 +12,7 @@ export default function EditProduct() {
   useEffect(() => {
     async function loadProduct() {
       try {
-        const { data } = await ProductsService.getContactById(id)
+        const { data } = await ProductsService.getProductById(id)
         productFormRef.current.setFieldsValues(data);
         setProductName(data.name);
       } catch {
@@ -26,7 +26,7 @@ export default function EditProduct() {
   async function handleSubmit(product) {
 
     try {
-      const { data } = await ProductsService.updateContact(id, product);
+      const { data } = await ProductsService.updateProduct(id, product);
 
       setProductName(data.name);
       alert('produto editado com sucesso!');
