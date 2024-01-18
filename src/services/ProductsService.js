@@ -9,12 +9,16 @@ class ProductsService {
     return api.post('/products', {name, description, price});
   }
 
-  getContactById(id) {
+  getProductById(id) {
     return api.get(`/products/${id}`);
   }
 
-  updateContact(id, product) {
+  updateProduct(id, product) {
     return api.put(`/products/${id}`, product);
+  }
+
+  deleteProduct(id) {
+    return api.delete(`/products/${id}`);
   }
 }
 

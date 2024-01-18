@@ -8,38 +8,62 @@ import SearchNotFound from "./components/SearchNotFound";
 import ErrorComponent from "./components/ErrorComponent";
 import { useCallback } from "react";
 import EmptyList from "./components/EmptyList";
+import Modal from "../../components/Modal";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [hasError, setHasError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
+  const [isLoadingDelete, setIsLoadingDelete] = useState(false);
 
   const filteredProducts = useMemo(() => products.filter((product) => (
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  )), [products, searchTerm])
+  )), [products, searchTerm]);
 
   const loadProducts = useCallback(async () => {
     try {
       const {data} = await ProductsService.listProducts();
 
       setProducts(data);
-      setHasError(false)
+      setHasError(false);
     } catch (error){
-      setHasError(true)
+      setHasError(true);
       setProducts([]);
       console.log(error?.message);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    loadProducts()
-  }, [loadProducts])
+    loadProducts();
+  }, [loadProducts]);
 
   function handleDeleteProduct(product) {
-    alert(product.name + ' deletado')
+    setIsDeleteModalVisible(true);
+    setProductToDelete(product);
+  }
+
+  function handleCloseDeleteModal() {
+    setIsDeleteModalVisible(false);
+  }
+
+  async function handleConfirmDeleteProduct() {
+    try {
+      setIsLoadingDelete(true);
+      await ProductsService.deleteProduct(productToDelete.id);
+      handleCloseDeleteModal();
+      setProducts((prevState) => prevState.filter((product) => (
+        product.id !== productToDelete.id
+      )));
+    } catch {
+      alert('Ocorreu um erro ao deletar o produto!');
+    } finally {
+      setIsLoadingDelete(false);
+    }
   }
 
   function handleChangeSearchTerm(event) {
@@ -47,7 +71,7 @@ export default function Home() {
   }
 
   function handleTryAgain() {
-    loadProducts()
+    loadProducts();
   }
 
   return (
@@ -55,7 +79,7 @@ export default function Home() {
       <ListHeader>
         <div className="list-text">
             <h1>Lista de produtos</h1>
-            {!hasError && (
+            {(!hasError && !isLoading) && (
               <span>
                 {filteredProducts.length} {filteredProducts.length === 1 ? 'produto' : 'produtos'}
               </span>
@@ -92,6 +116,17 @@ export default function Home() {
           onDeleteProduct={handleDeleteProduct}
         />
       )}
+
+      <Modal
+        danger
+        visible={isDeleteModalVisible}
+        onCancel={handleCloseDeleteModal}
+        onConfirm={handleConfirmDeleteProduct}
+        title={`Tem certeza que deseja remover o produto ”${productToDelete?.name}”?`}
+        isLoading={isLoadingDelete}
+      >
+        <p>Essa ação não poderá ser desfeita!</p>
+      </Modal>
     </Container>
   )
 }
