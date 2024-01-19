@@ -1,20 +1,8 @@
-import { useRef } from "react";
 import ProductForm from "../../components/ProductForm";
-import ProductsService from "../../services/ProductsService";
+import useNewProduct from "./useNewProduct";
 
 export default function NewProduct() {
-  const productFormRef = useRef(null);
-
-  async function handleSubmit(product) {
-    try {
-      await ProductsService.createProduct(product);
-
-      productFormRef.current.resetFields();
-      alert('produto cadastrado com sucesso!');
-    } catch (error) {
-      alert('Erro ao cadastrar o produto!');
-    }
-  }
+  const { productFormRef, handleSubmit} = useNewProduct();
   return (
     <>
       <ProductForm
