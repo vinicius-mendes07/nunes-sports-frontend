@@ -6,16 +6,18 @@ export default function Button({
   onClick,
   children,
   disabled,
+  isLoading,
   danger,
 }){
   return (
     <StyledButton
       type={type}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || isLoading}
       $danger={danger}
     >
-      {children}
+      {!isLoading && children}
+      {isLoading && 'Carregando...'}
     </StyledButton>
   )
 }
@@ -25,6 +27,7 @@ Button.propTypes = {
   type: PropTypes.string,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
   danger: PropTypes.bool,
 }
 
@@ -32,5 +35,6 @@ Button.defaultProps = {
   type: 'button',
   onClick: undefined,
   disabled: false,
+  isLoading: false,
   danger: false,
 }

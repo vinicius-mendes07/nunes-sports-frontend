@@ -1,12 +1,11 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import { Container } from "./styles";
 
-import edit from '../../../../assets/images/icons/edit.svg'
-import trash from '../../../../assets/images/icons/trash.svg'
+import edit from '../../../../assets/images/icons/edit.svg';
+import trash from '../../../../assets/images/icons/trash.svg';
 
-export default function ProductsTable({filteredProducts, onDeleteProduct}) {
-
+export default function ProductsTable({ filteredProducts, onDeleteProduct }) {
   return (
     <Container>
       <table>
@@ -31,7 +30,7 @@ export default function ProductsTable({filteredProducts, onDeleteProduct}) {
                   </Link>
                   <button
                     onClick={() => onDeleteProduct(product)}
-                    >
+                  >
                     <img src={trash} alt="delete" />
                   </button>
                 </div>
@@ -41,7 +40,7 @@ export default function ProductsTable({filteredProducts, onDeleteProduct}) {
         </tbody>
       </table>
     </Container>
-  )
+  );
 }
 
 ProductsTable.propTypes = {
@@ -50,5 +49,5 @@ ProductsTable.propTypes = {
     description: PropTypes.string,
     price: PropTypes.string.isRequired
   })).isRequired,
-  onDeleteProduct: PropTypes.func.isRequired
-}
+  onDeleteProduct: PropTypes.func.isRequired,
+};

@@ -19,4 +19,4 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.colors.primary.main};
     }
   }
-`
+`;

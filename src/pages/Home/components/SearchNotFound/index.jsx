@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { Container } from "./styles";
-import magnifierQuestion from '../../../../assets/images/magnifier-question.svg'
+import magnifierQuestion from '../../../../assets/images/magnifier-question.svg';
 
 export default function SearchNotFound({searchTerm}) {
   return (
@@ -8,9 +8,9 @@ export default function SearchNotFound({searchTerm}) {
       <img src={magnifierQuestion} alt="magnifier" />
       <p>Nenhum resultado encontrado para "{searchTerm}"</p>
     </Container>
-  )
+  );
 }
 
 SearchNotFound.propTypes = {
   searchTerm: PropTypes.string.isRequired,
-}
+};

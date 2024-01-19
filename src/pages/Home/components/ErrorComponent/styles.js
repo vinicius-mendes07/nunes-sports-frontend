@@ -14,4 +14,4 @@ export const Container = styled.div`
     margin-bottom: 8px;
     display: block;
   }
-`
+`;

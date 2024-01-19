@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types'
-import { useImperativeHandle } from 'react';
-import { forwardRef } from 'react';
-import { useState } from "react";
+import { forwardRef, useState, useImperativeHandle } from 'react';
 import Button from "../Button";
 import { Input } from "../Input";
 import { Form } from "./styles";
@@ -70,7 +68,8 @@ const ProductForm = forwardRef(({ pageTitle, buttonLabel, onSubmit }, ref) => {
         />
         <Button
           type="submit"
-          disabled={!isFormValid || isSubmitting}
+          disabled={!isFormValid}
+          isLoading={isSubmitting}
         >
           {buttonLabel}
         </Button>

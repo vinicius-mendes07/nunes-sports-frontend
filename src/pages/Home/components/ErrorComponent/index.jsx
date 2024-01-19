@@ -17,4 +17,4 @@ export default function ErrorComponent({ handleTryAgain }) {
 
 ErrorComponent.propTypes = {
   handleTryAgain: PropTypes.func.isRequired,
-}
+};
