@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { forwardRef, useState, useImperativeHandle } from 'react';
 import Button from "../Button";
 import { Input } from "../Input";
@@ -37,14 +37,14 @@ const ProductForm = forwardRef(({ pageTitle, buttonLabel, onSubmit }, ref) => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
-    await onSubmit({name, description, price: +price})
+    await onSubmit({ name, description, price: +price });
 
-    setIsSubmitting(false)
+    setIsSubmitting(false);
   }
 
-  const isFormValid = (name && price)
+  const isFormValid = (name && price);
 
   return (
     <>
@@ -54,12 +54,12 @@ const ProductForm = forwardRef(({ pageTitle, buttonLabel, onSubmit }, ref) => {
           onChange={handleChangeName}
           value={name}
           placeholder="Nome *"
-          />
+        />
         <Input
           onChange={handleChangeDescription}
           value={description}
           placeholder="Descrição"
-          />
+        />
         <Input
           onChange={handleChangePrice}
           value={price}
@@ -75,7 +75,7 @@ const ProductForm = forwardRef(({ pageTitle, buttonLabel, onSubmit }, ref) => {
         </Button>
       </Form>
     </>
-  )
+  );
 });
 
 export default ProductForm;
@@ -84,4 +84,4 @@ ProductForm.propTypes = {
   pageTitle: PropTypes.string.isRequired,
   buttonLabel: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-}
+};

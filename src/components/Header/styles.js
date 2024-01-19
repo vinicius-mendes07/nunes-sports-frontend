@@ -42,4 +42,4 @@ export const Container = styled.header`
       width: 100px;
     }
   }
-`
+`;

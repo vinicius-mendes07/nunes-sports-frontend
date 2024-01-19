@@ -8,9 +8,8 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 16px;
 
-
   h1 {
     text-align: center;
     margin-bottom: 16px;
   }
-`
+`;

@@ -54,7 +54,7 @@ export const Overlay = styled.div`
   animation: ${fadeIn} 0.3s;
 
   ${({ $isLeaving }) => $isLeaving && css`animation: ${fadeOut} 0.3s forwards;`}
-  `;
+`;
 
 export const Container = styled.div`
   background-color: #fff;

@@ -40,4 +40,4 @@ export const StyledButton = styled.button`
       background-color: ${theme.colors.danger.dark};
     }
   `};
-`
+`;

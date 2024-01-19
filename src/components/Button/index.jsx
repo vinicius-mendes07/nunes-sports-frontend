@@ -1,5 +1,5 @@
 import { StyledButton } from "./styles";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 export default function Button({
   type,
@@ -8,7 +8,7 @@ export default function Button({
   disabled,
   isLoading,
   danger,
-}){
+}) {
   return (
     <StyledButton
       type={type}
@@ -19,7 +19,7 @@ export default function Button({
       {!isLoading && children}
       {isLoading && 'Carregando...'}
     </StyledButton>
-  )
+  );
 }
 
 Button.propTypes = {
@@ -29,7 +29,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   isLoading: PropTypes.bool,
   danger: PropTypes.bool,
-}
+};
 
 Button.defaultProps = {
   type: 'button',
@@ -37,4 +37,4 @@ Button.defaultProps = {
   disabled: false,
   isLoading: false,
   danger: false,
-}
+};

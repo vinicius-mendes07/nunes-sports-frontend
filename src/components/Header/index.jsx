@@ -1,5 +1,5 @@
 import { Container } from "./styles";
-import nunesSports from '../../assets/images/nunesSports.png'
+import nunesSports from '../../assets/images/nunesSports.png';
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -11,5 +11,5 @@ export default function Header() {
         <Link to="/new">Criar novo produto</Link>
       </div>
     </Container>
-  )
+  );
 }

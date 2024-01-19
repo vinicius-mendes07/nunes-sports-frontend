@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { useRef } from 'react';
-import { useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Button from "../Button";
 import { Container, Footer, Overlay } from "./styles";
@@ -22,7 +20,7 @@ export default function Modal({
   const animatedElementRef = useRef(null);
 
   useEffect(() => {
-    if(visible) {
+    if (visible) {
       setShouldRender(true);
     }
 
@@ -31,12 +29,12 @@ export default function Modal({
     }
 
     const elementRef = animatedElementRef.current;
-    if(!visible && elementRef) {
+    if (!visible && elementRef) {
       elementRef.addEventListener('animationend', handleAnimationEnd);
     }
 
     return () => {
-      if(elementRef) {
+      if (elementRef) {
         elementRef.removeEventListener('animationend', handleAnimationEnd);
       }
     }
@@ -50,7 +48,7 @@ export default function Modal({
     document.body.appendChild(container);
   }
 
-  if(!shouldRender) {
+  if (!shouldRender) {
     return null;
   }
 
@@ -96,11 +94,11 @@ Modal.propTypes = {
   confirmLabel: PropTypes.string,
   danger: PropTypes.bool,
   isLoading: PropTypes.bool,
-}
+};
 
 Modal.defaultProps = {
   cancelLabel: 'Cancelar',
   confirmLabel: 'Confirmar',
   danger: false,
   isLoading: false,
-}
+};
