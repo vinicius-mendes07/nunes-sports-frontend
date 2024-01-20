@@ -5,9 +5,9 @@ Projeto que mostra os produtos de uma loja em uma tabela, para visualização, e
 <h2 id="layout">🎨 Layout</h2>
 
 <p align="center">
-    <img src="/home.png" alt="home Example" width="400px">
-    <img src="/edit-product.png" alt="edit product Example" width="400px">
-    <img src="/new-product.png" alt="new product Example" width="400px">
+    <img src="./public/home.png" alt="home Example" width="400px">
+    <img src="./public/edit-product.png" alt="edit product Example" width="400px">
+    <img src="./public/new-product.png" alt="new product Example" width="400px">
 </p>
 
 <h2 id="tecnologias">💻 Tecnologias</h2>
