@@ -6,7 +6,7 @@ Projeto que mostra os produtos de uma loja em uma tabela, para visualização, e
 
 <p align="center">
     <img src="./public/home.png" alt="home Example" width="400px">
-    <img src="./public/edit-product.png" alt="edit product Example" width="400px">
+    <img src="./public/edit-products.png" alt="edit product Example" width="400px">
     <img src="./public/new-product.png" alt="new product Example" width="400px">
 </p>
 
