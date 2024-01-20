@@ -1,6 +1,9 @@
 import axios from 'axios';
+
+const baseURL = import.meta.env.VITE_PUBLIC_BASEURL;
+
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL,
   timeout: 10000,
 });
 
